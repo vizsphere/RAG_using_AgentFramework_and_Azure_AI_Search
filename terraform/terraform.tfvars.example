@@ -1,0 +1,23 @@
+# Copy this file to terraform.tfvars and adjust as needed.
+# Every value below already matches the defaults in variables.tf, so
+# `terraform apply` works with no tfvars file at all - this is just here
+# to make the three requested resources and their names explicit and easy
+# to override later.
+
+location             = "eastus2"
+resource_group_name  = "viz-ai-search"
+
+storage_account_name             = "demovizmsstd"
+storage_account_replication_type = "LRS"
+storage_container_name           = "data"
+
+ai_foundry_name          = "demo-viz-ms-ai-foundry"
+ai_foundry_project_name  = "demo-vizsphere"
+chat_model_name           = "gpt-5"
+embedding_model_name      = "text-embedding-3-small"
+
+search_service_name     = "demo-viz-ai-search"
+search_service_sku      = "free"
+# Independent of `location` - override again if this region also runs out of
+# free-tier capacity (400 InsufficientResourcesAvailable):
+search_service_location = "eastus"

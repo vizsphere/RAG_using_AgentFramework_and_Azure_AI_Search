@@ -1,0 +1,95 @@
+﻿@model RAG_using_AgentFramework_and_Azure_AI_Search.Models.SearchTerms
+<h4>
+    Agentic RAG with Microsoft Agent Framework and Azure AI Search
+</h4>
+<br />
+
+<div class="container p-3">
+
+    <form id="search-form">
+        <div class="row align-items-lg-start">
+            <div class="col-8">
+                <div class="form-group">
+                    <label asp-for="@Model.Input">Q:></label>
+                    <input asp-for="@Model.Input" class="form-control" placeholder="Search speakers" required />
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-lg-start">
+            <div class="col-2">
+                <div class="form-group">
+                    <label asp-for="@Model.TopK">TopK</label>
+                    <input asp-for="@Model.TopK" class="form-control" required />
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="form-group">
+                    <fieldset>
+                        <legend>Search type:</legend>
+
+                        <div>
+                            <input type="radio" id="simpleSearch" name="search" checked />
+                            <label for="simpleSearch">Simple Search</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="agenticSearch" name="search" />
+                            <label for="agenticSearch">Agentic Search</label>
+                        </div>
+                        <div>
+                            <label for="IncludeCitations">Include Citations</label>
+                            <input type="checkbox" name="IncludeCitations"  id="IncludeCitations" value="@Model.IncludeCitations"/>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+                <div id="spinner" class="spinner-border visually-hidden" role="status">
+                    <span >Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <textarea id="searchResult" readonly rows="20"></textarea>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-control">
+                <span class="alert-info fw-bold">Simple Azure AI Search Queries: </span>
+                <ol>
+                    <li>AI researcher specializing in natural language processing and machine learning.</li>
+                    <li>Find Solution architect and enterprise software designer with expertise</li>
+                    <li>Find me list of all developers and Solution architect</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="form-control">
+                <span class="alert-info fw-bold">Agentic RAG Queries: </span>
+                <ol>
+                    <li>
+                        Find me AI Specialists?
+                    </li>
+                    <li>
+                        Find me Data Scientists?
+                    </li>
+                    <li>
+                        Give me name and count of Developers?
+
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
