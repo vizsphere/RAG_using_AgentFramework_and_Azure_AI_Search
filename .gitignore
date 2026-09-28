@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/RAG_using_AgentFramework_and_Azure_AI_Search/FileContentIndex
+/RAG_using_AgentFramework_and_Azure_AI_Search/bin/Debug/net9.0
+*.suo
+/RAG_using_AgentFramework_and_Azure_AI_Search/obj
