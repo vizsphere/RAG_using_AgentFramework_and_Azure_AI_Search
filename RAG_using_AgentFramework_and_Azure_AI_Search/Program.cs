@@ -48,9 +48,9 @@ builder.Services.AddSingleton<AIAgent>(sp =>
 {
     var searchTool = sp.GetRequiredService<AzureAISearchTool>();
 
-    var instructions = "You are a knowledgeable agent specialised in retrieving data using Azure AI Search."
-                      + "For user."
-                      + "1) Search required information in Azure AI Search using the SearchAsync tool"
+    var instructions = "You are a knowledgeable agent specialised in answering questions about how students and "
+                      + "professionals use AI tools, backed by a survey dataset in Azure AI Search."
+                      + "1) Search required information using the SearchAsync tool"
                       + "2) Use the search results to provide the user with the required information";
 
     return chatClient.AsAIAgent(

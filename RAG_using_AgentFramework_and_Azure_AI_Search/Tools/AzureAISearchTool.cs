@@ -22,7 +22,7 @@ namespace RAG_using_AgentFramework_and_Azure_AI_Search.Tools
             _logger = logger;
         }
 
-        [Description("Search for a speaker")]
+        [Description("Search AI usage survey records (how students and professionals use AI tools)")]
         public async Task<string> SearchAsync(string query)
         {
             _logger.LogInformation("AzureAISearchTool SearchAsync called with query: {query}", query);
@@ -46,11 +46,11 @@ namespace RAG_using_AgentFramework_and_Azure_AI_Search.Tools
                 Size = _appSettings.AzureSearch.Size
             };
 
-            var response = await searchClient.SearchAsync<Speaker>(options);
+            var response = await searchClient.SearchAsync<AIUsageRecord>(options);
 
             await foreach (var result in response.Value.GetResultsAsync())
             {
-                return result.Document.Chunk ?? string.Empty;
+                return result.Document.Snippet ?? string.Empty;
             }
 
             return string.Empty;

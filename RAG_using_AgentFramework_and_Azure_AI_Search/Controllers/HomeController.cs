@@ -62,7 +62,7 @@ namespace RAG_using_AgentFramework_and_Azure_AI_Search.Controllers
                 Size = search.TopK
             };
 
-            var response = await _searchClient.SearchAsync<Speaker>(options);
+            var response = await _searchClient.SearchAsync<AIUsageRecord>(options);
 
             if (response == null || response.Value.GetResults().Count() == 0)
             {
@@ -73,7 +73,7 @@ namespace RAG_using_AgentFramework_and_Azure_AI_Search.Controllers
 
             await foreach (var r in response.Value.GetResultsAsync())
             {
-                result.Response += r.Document.Chunk ?? string.Empty + "\n\n";
+                result.Response += r.Document.Snippet ?? string.Empty + "\n\n";
             }
 
             return Ok(result);
