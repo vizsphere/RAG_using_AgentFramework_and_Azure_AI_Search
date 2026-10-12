@@ -11,7 +11,6 @@ patterns over a survey dataset of how students and professionals use AI tools.
   - Direct Vector Search: Traditional semantic search with full control
   - Agentic RAG: An `AIAgent` that calls a search tool on its own and reasons over the results
 
-![Agentic-Azure-AI-Search](https://github.com/user-attachments/assets/77bf8c65-aa68-42b3-8fb5-0916343ff204)
 
 > The screenshot above predates the current dataset/UI copy (it shows the earlier
 > speaker-search demo) - the app itself now searches AI-usage survey records.
