@@ -149,15 +149,28 @@ Navigate to `http://localhost:5296` in your browser (see `Properties/launchSetti
 The application performs vector similarity search against Azure AI Search and returns relevant results.
 
 ### Simple AI Search queries
-    Students using ChatGPT for coding and studying
-    Professionals using AI tools for office work and data analysis
-    Customer support specialists using AI chatbots
+    Content writers creating blog posts and marketing copy with AI
+    Professionals using AI for data analysis and research
+    Software developers debugging and reviewing code with AI
+    Customer support teams using AI chatbots to resolve inquiries
 
 ### Agentic RAG queries
 
-	Which AI tool do students use most for coding?
-	Find a professional who would recommend their AI tool for office work
-	How are professionals using AI for customer support?
+	How do content writers use AI to create marketing copy?
+	How are professionals using AI for data analysis and research?
+	How do software developers use AI to debug and review code?
+	How are customer support teams using AI chatbots?
+
+> **Why these specific questions, not "which profession is most satisfied" or "who would
+> recommend their tool":** this index is a generic text-chunk index (see `Models/AIUsageRecord.cs`),
+> not structured per-row data. We verified empirically (embedding real queries and inspecting
+> actual vector search scores) that `Profession`, `Would_Recommend`, and `Satisfaction_Score`
+> aren't expressed richly enough in the indexed text to retrieve well *no matter how the question
+> is phrased* - they're short categorical values, not natural language. Only questions matching
+> what `Tasks_Performed`/`AI_Purpose` actually describe - what people *do* with AI - retrieve
+> reliably (~0.69-0.73 similarity on genuinely on-topic results, vs. ~0.52 for an unrelated
+> baseline query). The agent's search tool also only ever returns one matching chunk per call,
+> not the full dataset, so its answer describes a few examples, not every professional who does this.
 
 
 ## Sample Data source
